@@ -1,11 +1,10 @@
 module github.com/foxboron/go-uefi
 
-go 1.21
+go 1.20
 
-toolchain go1.21.5
+//toolchain go1.21.5
 
 require (
-	github.com/anatol/vmtest v0.0.0-20220413190228-7a42f1f6d7b8
 	github.com/pkg/errors v0.9.1
 	go.mozilla.org/pkcs7 v0.0.0-20200128120323-432b2356ecb1
 	golang.org/x/crypto v0.16.0

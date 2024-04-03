@@ -31,8 +31,11 @@ func FormatSignatureList(siglist []*signature.SignatureList) {
 			switch sig.SignatureType {
 			case signature.CERT_X509_GUID:
 				cert, _ := x509.ParseCertificate(sigEntry.Data)
-				fmt.Printf("		Issuer: %s\n", cert.Issuer.String())
-				fmt.Printf("		Serial Number: %d\n", cert.SerialNumber)
+				if cert != nil {
+					fmt.Printf("		Issuer: %s\n", cert.Issuer.String())
+					fmt.Printf("		Serial Number: %d\n", cert.SerialNumber)
+					os.WriteFile(cert.SerialNumber.String(), cert.Raw, 0644)
+				}
 			case signature.CERT_SHA256_GUID:
 				fmt.Printf("		Type: %s\n", "SHA256")
 				fmt.Printf("		Checksum: %x\n", sigEntry.Data)
